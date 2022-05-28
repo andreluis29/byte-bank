@@ -1,22 +1,27 @@
+import javax.swing.JOptionPane;
+
 public class Main {
-    public static void main(String[] args) throws Exception {
-
+    public static void main(String[] args) {
         Cliente andre = new Cliente();
-        andre.nome = "André Luís";
-        andre.cpf = "777.157.069-51";
-        andre.profissao = "Programador";
+        andre.setNome("André Luís");
+        andre.setCpf("1");
+        andre.setProfissao("Desenvolvedor Java");
+        String cpfDigitado = JOptionPane.showInputDialog(null, "Digite seu cpf:");
+        boolean foiPermitidoAcesso = andre.podeAcessar(cpfDigitado);
+        if (foiPermitidoAcesso == true) {
 
-        Conta primeiraConta = new Conta();
-        primeiraConta.titular = andre;
-        primeiraConta.deposita(200);
+            Conta contaAndre = new Conta();
+            contaAndre.setTitular(andre);
+            contaAndre.deposita(5000);
+            contaAndre.setNumero(39218);
 
-
-        System.out.println("Informações da conta\n" 
-        + andre.informacoesDeCliente(andre.nome, andre.cpf, andre.profissao));
-        
-        System.out.println("ag conta 1:" + primeiraConta.agencia);
-        System.out.println("saldo: R$" + primeiraConta.saldo);
- 
-
+            JOptionPane.showMessageDialog(null, "Informações de cliente \n" 
+            + andre.informacoesDeCliente(andre.getNome(), andre.getCpf(), andre.getProfissao())
+            + " \nInformações da conta acessada \n" + " \nTitular: " + contaAndre.getTitular().getNome() +
+            " \nag conta:" + contaAndre.getAgencia() + " \nnúmero da conta: " + contaAndre.getNumero() +
+            " \nsaldo: R$" + contaAndre.getSaldo());
+        } else {
+            JOptionPane.showMessageDialog(null, "Não identificado");
+        }
     }
 }
