@@ -3,7 +3,7 @@ public class Cliente {
     private String nome, cpf, profissao;
     
     public boolean podeAcessar(String cpf) {
-        if (this.cpf == cpf) {
+        if (this.cpf.equals(cpf)) {
             return true;
         }
         return false;
@@ -14,7 +14,7 @@ public class Cliente {
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public String setNome(String nome) {
@@ -22,7 +22,7 @@ public class Cliente {
     }
 
     public String getCpf() {
-        return cpf;
+        return this.cpf;
     }
 
     public String setCpf(String cpf) {
@@ -30,7 +30,7 @@ public class Cliente {
     }
 
     public String getProfissao() {
-        return profissao;
+        return this.profissao;
     }
 
     public String setProfissao(String profissao) {
