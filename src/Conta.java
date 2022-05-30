@@ -1,8 +1,18 @@
 public class Conta {
     private double saldo;
     private int numero;
-    private int agencia = 31;
+    private int agencia;
+    private static int totalDeContas;
     private Cliente titular;
+
+    public Conta(int agencia, int numero) {
+        totalDeContas = totalDeContas + 1;
+        if (agencia > 0 && numero > 0) {
+            this.agencia = agencia;
+            this.numero = numero;
+        }
+        return;
+    }
 
     public void deposita(double valor) {
         this.saldo = this.saldo + valor;
@@ -33,10 +43,6 @@ public class Conta {
         return this.numero;
     }
 
-    public int setNumero(int numero) {
-        return this.numero = numero;
-    }
-
     public int getAgencia() {
         return this.agencia;
     }
@@ -49,4 +55,7 @@ public class Conta {
         return this.titular = titular;
     }
 
+    public static int getTotalDeContas() {
+        return totalDeContas;
+    }
 }
